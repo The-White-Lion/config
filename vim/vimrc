@@ -1,0 +1,220 @@
+" ====================
+" === Editor Setup ===
+" ====================
+
+" ===
+" === System
+" ===
+set nocompatible
+set encoding=utf-8
+" set paste
+scriptencoding utf-8
+filetype plugin indent on
+" Auto change directory to current dir
+autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+" show a navigable menu for tab completion
+set wildmenu
+set wildmode=list:longest,full
+
+" ===
+" === Text display
+" ===
+set number
+set cursorline
+set scrolloff=6
+syntax enable
+syntax on
+
+" ===
+" === Searching option
+" ===
+set hlsearch
+exec "nohlsearch"
+set incsearch
+set ignorecase
+set smartcase
+
+" ===
+" === Editor behavior
+" ===
+" better tab
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set list
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+
+" Prevent auto line split
+set wrap
+set tw=0
+
+" Better backspace
+set backspace=indent,eol,start
+
+" Fold code
+set foldmethod=indent
+set foldlevel=9
+
+" Cursor shape
+if has("autocmd")
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
+  au InsertEnter,InsertChange *
+    \ if v:insertmode == 'i' |
+    \   silent execute '!echo -ne "\e[5 q"' | redraw! |
+    \ elseif v:insertmode == 'r' |
+    \   silent execute '!echo -ne "\e[3 q"' | redraw! |
+    \ endif
+  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
+
+" ===
+" === Window behaviors
+" ===
+set splitright
+set splitbelow
+
+" ===
+" === Status/command bar
+" ===
+set laststatus=2
+set statusline=%<%f\
+set statusline+=%w%h%m%r
+" set statusline+=%{fugitive#statusline()} 
+set statusline+=\ [%{&ff}/%Y]
+set statusline+=\ [%{getcwd()}]
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%
+set autochdir
+set showcmd
+set formatoptions-=tc
+
+" ===
+" === Restore Cursor Position
+" ===
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" ===
+" === Basic Mappings
+" ===
+
+" Set <LEADER> as <SPACE>
+let mapleader=" "
+
+" Column (:) mods
+" map ; :
+" map q; q:
+
+" Save & Quit
+map <C-s> :w<CR>
+map <LEADER>q :q<cr>
+
+" J/K keys for 5 time j/k
+map J 5j
+map K 5k
+
+noremap j gj
+noremap k gk
+
+imap <M-j> <Down>
+imap <M-k> <Up>
+imap <M-h> <Left>
+imap <M-l> <Right>
+
+" Cancel the highlight
+map <LEADER><CR> :nohlsearch<CR>
+
+" ===
+" === Windows management
+" ===
+
+" Split windows
+map <LEADER>sh :split<CR>
+map <LEADER>sv :vsplit<CR>
+
+" Change the focus of splitting screen
+map <LEADER>h <C-w>h
+map <LEADER>j <C-w>j
+map <LEADER>k <C-w>k
+map <LEADER>l <C-w>l
+
+" Move the splitting screen
+map <LEADER>H <C-w>H
+map <LEADER>J <C-w>J
+map <LEADER>K <C-w>K
+map <LEADER>L <C-w>L
+
+" Change the splitting direction
+map <LEADER>sth <C-w>b<C-w>K
+map <LEADER>stv <C-w>b<C-w>H
+
+" Resize splits with arrow keys
+map <up> :resize +2<CR>
+map <down> :resize -2<CR>
+map <right> :vertical resize +2<CR>
+map <left> :vertical resize -2<CR>
+
+" ===
+" === Tab management
+" ===
+" Create a new tab with tc
+map tc :tabe<CR>
+" Move the tabs with tmh and tml
+map tmh :-tabmove<CR>
+map tml :+tabmove<CR>
+
+" ===
+" === Other useful stuff
+" ===
+
+" Press space twice to jump to the next '<++>' and edit it
+map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+
+map <LEADER>ff :call fzf#run({'sink':'tabedit'})<CR>
+" Spelling Check with <space>sc
+" map <LEADER>sc :set spell!<CR>
+" noremap <C-x> ea<C-x>s
+" inoremap <C-x> <Esc>ea<C-x>s
+
+" Share clipboard with other appliaction
+vnoremap <LEADER>y "+y
+nnoremap <LEADER>p "*p
+
+noremap <F5> :call CompileRun()<CR>
+func! CompileRun()
+    exec "w"
+    if &filetype == 'python'
+        set splitbelow
+        :sp
+        :term python3 %
+    elseif &filetype == 'go'
+        set splitbelow
+        :sp
+        :term go run %
+    endif
+endfunc
+
+" ===
+" === Plug
+" ===
+call plug#begin('~/.config/vim/plugged')
+Plug 'vim-airline/vim-airline'
+Plug 'ryanoasis/vim-devicons'
+Plug 'joshdick/onedark.vim'
+Plug 'sainnhe/edge'
+Plug 'luochen1990/rainbow'
+call plug#end()
+
+set termguicolors
+set t_Co=256
+set background=dark
+if (has("autocmd") && !has("gui_running"))
+  augroup colorset
+    autocmd!
+    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
+    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
+  augroup END
+endif
+
+colorscheme onedark
+
+let g:rainbow_active = 1
