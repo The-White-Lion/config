@@ -115,10 +115,15 @@ map K 5k
 noremap j gj
 noremap k gk
 
-imap <M-j> <Down>
-imap <M-k> <Up>
-imap <M-h> <Left>
-imap <M-l> <Right>
+imap <C-j> <Down>
+imap <C-k> <Up>
+imap <C-h> <Left>
+imap <C-l> <Right>
+
+" remap esc to other keys
+inoremap jk <ESC>
+xnoremap jk <ESC>
+cnoremap jk <ESC>
 
 " Cancel the highlight
 map <LEADER><CR> :nohlsearch<CR>
@@ -183,12 +188,8 @@ noremap <F5> :call CompileRun()<CR>
 func! CompileRun()
     exec "w"
     if &filetype == 'python'
-        set splitbelow
-        :sp
         :term python3 %
     elseif &filetype == 'go'
-        set splitbelow
-        :sp
         :term go run %
     endif
 endfunc
