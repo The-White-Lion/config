@@ -106,7 +106,7 @@ let mapleader=" "
 
 " Save & Quit
 map <C-s> :w<CR>
-map <LEADER>q :q<cr>
+map <LEADER>q :q<CR>
 
 " J/K keys for 5 time j/k
 map J 5j
@@ -124,6 +124,12 @@ imap <C-l> <Right>
 inoremap jk <ESC>
 xnoremap jk <ESC>
 cnoremap jk <ESC>
+
+" open file explore
+map <LEADER>e :Vexplore<CR>
+
+" open a terminal below the current window
+map <C-\> :term<CR>
 
 " Cancel the highlight
 map <LEADER><CR> :nohlsearch<CR>
