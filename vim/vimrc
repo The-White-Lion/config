@@ -197,6 +197,8 @@ func! CompileRun()
         :term python3 %
     elseif &filetype == 'go'
         :term go run %
+    elseif &filetype == 'sh'
+        :term bash %
     endif
 endfunc
 
