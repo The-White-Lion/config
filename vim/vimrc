@@ -20,6 +20,7 @@ set wildmode=list:longest,full
 " === Text display
 " ===
 set number
+set relativenumber
 set cursorline
 set scrolloff=6
 syntax enable
@@ -108,9 +109,9 @@ let mapleader=" "
 map <C-s> :w<CR>
 map <LEADER>q :q<CR>
 
-" J/K keys for 5 time j/k
-map J 5j
-map K 5k
+" keys for 5 time j/k
+nmap <C-j> 5j
+nmap <C-k> 5k
 
 noremap j gj
 noremap k gk
