@@ -50,7 +50,7 @@ return {
     Diff = " ",
     Repo = " ",
     Octoface = " ",
-    Branch = " ",
+    Branch = "",
   },
   ui = {
     ArrowCircleDown = " ",
@@ -119,7 +119,7 @@ return {
     SignOut = " ",
     Tab = " ",
     Table = " ",
-    Target = "󰀘  ",
+    Target = " ",
     Telescope = " ",
     Text = " ",
     Tree = " ",
