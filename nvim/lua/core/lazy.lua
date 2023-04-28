@@ -24,9 +24,8 @@ local lazy_config = {
     -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|
     border = "double",
     icons = {
-      cmd = " ",
-      config = "",
-      event = "",
+      config = " ",
+      event = icons.kind.Event,
       ft = " ",
       init = " ",
       import = " ",
@@ -38,7 +37,7 @@ local lazy_config = {
       runtime = " ",
       source = " ",
       start = "",
-      task = "✔ ",
+      task = "✔",
       list = {
         "●",
         "➜",

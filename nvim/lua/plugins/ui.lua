@@ -36,28 +36,7 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    opts = {
-      options = {
-        disabled_filetypes = {
-          statusline = { "dashboard", "alpha" },
-        },
-      },
-      sections = {
-        lualine_a = { {
-          function()
-            return " " .. icons.ui.Target
-          end,
-          padding = { left = 0, right = 0 },
-          color = {},
-          cond = nil,
-        } },
-        lualine_b = { { "branch", icon = icons.git.Branch } },
-        lualine_c = { "filename" },
-        lualine_x = { "encoding", "fileformat", "filetype" },
-        lualine_y = { "progress" },
-        lualine_z = { "location" }
-      },
-    },
+    opts = require("plugins.config.lualine").opts,
   },
 
   -- icons
