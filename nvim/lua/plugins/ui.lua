@@ -39,6 +39,13 @@ return {
     opts = require("plugins.config.lualine").opts,
   },
 
+  -- bufferline
+  {
+    "akinsho/bufferline.nvim",
+    event = "VeryLazy",
+    opts = require("plugins.config.bufferline").opts,
+  },
+
   -- icons
   { "nvim-tree/nvim-web-devicons", lazy = true },
 
