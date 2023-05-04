@@ -15,4 +15,22 @@ return {
     end,
     opts = require("plugins.config.neotree").opts,
   },
+
+  -- search/replace in muliple files
+  {
+    "nvim-pack/nvim-spectre",
+    keys = {
+      { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
+    },
+  },
+
+  -- fuzzy finder
+  {
+    "nvim-telescope/telescope.nvim",
+    -- cmd = "Telescope",
+    version = false,
+    lazy = false,
+    keys = require("plugins.config.telescope").keys,
+    opts = require("plugins.config.telescope").opts,
+  },
 }
