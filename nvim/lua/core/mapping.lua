@@ -2,8 +2,8 @@ return {
   normal_mode = {
     ["<Space>"] = "<nop>",
     -- Exit neovim
-    ["<leader>q"] = ":q<CR>",
-    ["<leader>Q"] = ":q<CR>",
+    ["<M-q>"] = ":q<CR>",
+    ["<M-Q>"] = ":q<CR>",
     -- Save file
     ["<C-s>"] = ":w<CR>",
     -- Better cursor movement
