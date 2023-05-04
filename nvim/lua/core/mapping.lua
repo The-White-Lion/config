@@ -1,6 +1,3 @@
--- vim.keymap.set("n", "<leader>ec", ":vsplit $MYVIMRC<CR>", {silent = true, noremap = true})
--- vim.keymap.set("n", "<leader>sc", ":source $MYVIMRC<CR>", {silent = true, noremap = true})
-
 return {
   normal_mode = {
     ["<Space>"] = "<nop>",

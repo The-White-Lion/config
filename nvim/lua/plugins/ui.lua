@@ -46,6 +46,13 @@ return {
     opts = require("plugins.config.bufferline").opts,
   },
 
+  -- dashboard
+  {
+    "goolord/alpha-nvim",
+    event = "VimEnter",
+    opts = require("plugins.config.alpha").opts,
+    config = require("plugins.config.alpha").config,
+  },
   -- icons
   { "nvim-tree/nvim-web-devicons", lazy = true },
 
