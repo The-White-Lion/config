@@ -47,10 +47,18 @@ return {
     keys = require("plugins.config.flit").keys
   },
 
-  -- git signs
+  -- gitsigns
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
     opts = require("plugins.config.gitsigns").opts
+  },
+
+  -- references
+  {
+    "RRethy/vim-illuminate",
+    opts = require("plugins.config.illuminate").opts,
+    config = require("plugins.config.illuminate").config,
+    keys = require("plugins.config.illuminate").keys,
   },
 }
