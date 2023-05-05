@@ -27,10 +27,23 @@ return {
   -- fuzzy finder
   {
     "nvim-telescope/telescope.nvim",
-    -- cmd = "Telescope",
+    cmd = "Telescope",
     version = false,
-    lazy = false,
     keys = require("plugins.config.telescope").keys,
     opts = require("plugins.config.telescope").opts,
+  },
+
+  -- eaisly jump to any loaction
+  {
+    "ggandor/leap.nvim",
+    keys = require("plugins.config.leap").keys,
+    config = require("plugins.config.leap").config,
+  },
+
+  -- enhanced f/t motions
+  {
+    "ggandor/flit.nvim",
+    opts = require("plugins.config.flit").opts,
+    keys = require("plugins.config.flit").keys
   },
 }

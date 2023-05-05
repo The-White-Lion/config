@@ -75,7 +75,7 @@ return {
     ChevronRight = ">",
     ChevronShortDown = "",
     ChevronShortLeft = "",
-    ChevronShortRight = "",
+    ChevronShortRight = " ",
     ChevronShortUp = "",
     Circle = " ",
     Close = "",

@@ -30,8 +30,11 @@ M.opts = {
         ["<C-b>"] = function(...)
           return require("telescope.actions").preview_scrolling_down(...)
         end,
-        ["<C-t>"] = function(...)
+        ["<C-f>"] = function(...)
           return require("telescope.actions").preview_scrolling_up(...)
+        end,
+        ["<ESC>"] = function(...)
+          return require("telescope.actions").close(...)
         end,
       },
       n = {
