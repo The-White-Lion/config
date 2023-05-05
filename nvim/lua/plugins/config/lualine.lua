@@ -1,7 +1,7 @@
 local M = {}
 
 local color = {
-  bg = "#202328",
+  bg = "#16161e",
   fg = "#bbc2cf",
   yellow = "#ECBE7B",
   cyan = "#008080",
@@ -36,6 +36,17 @@ local function python_venv()
   return ""
 end
 
+local function diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed,
+    }
+  end
+end
+
 M.opts = {
   options = {
     disabled_filetypes = {
@@ -58,6 +69,22 @@ M.opts = {
         "branch",
         icon = { icons.git.Branch, color = { fg = color.orange } },
       },
+      {
+        "diff",
+        colored = true, -- Displays a colored diff status if set to true
+        diff_color = {
+          added    = { fg = color.green, bg = color.bg },
+          modified = { fg = color.yellow, bg = color.bg  },
+          removed  = { fg = color.red, bg = color.bg  },
+        },
+        padding = { left = 1, right = 0 },
+        symbols = {
+          added = icons.git.LineAdded,
+          modified = icons.git.LineModified,
+          removed = icons.git.LineRemoved
+        },
+        source = diff_source
+      }
     },
     lualine_c = {
       {

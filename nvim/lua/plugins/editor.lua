@@ -46,4 +46,11 @@ return {
     opts = require("plugins.config.flit").opts,
     keys = require("plugins.config.flit").keys
   },
+
+  -- git signs
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = require("plugins.config.gitsigns").opts
+  },
 }
