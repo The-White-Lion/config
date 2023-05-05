@@ -19,10 +19,10 @@ return {
     ["<leader>bn"] = ":bnext<CR>",
     ["<leader>bd"] = "<Cmd>bdelete<CR>",
     -- Window jumping
-    ["<leader>h"] = "<C-w>h",
+    ["<C-h>"] = "<C-w>h",
     ["<leader>j"] = "<C-w>j",
     ["<leader>k"] = "<C-w>k",
-    ["<leader>l"] = "<C-w>l",
+    ["<C-l>"] = "<C-w>l",
     -- Window moving
     ["<leader>H"] = "<C-w>H",
     ["<leader>J"] = "<C-w>J",
