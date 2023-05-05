@@ -17,21 +17,20 @@ local color = {
 
 local function python_venv()
   if vim.bo.filetype == "python" then
-    local command = "pyenv version"
-    local handle = io.popen(command)
-    if handle == nil then
-      return ""
-    end
+    local env = "system"
+    if vim.fn.executable("pyenv") == 1 then
+      local handle = io.popen("pyenv version")
+      if handle == nil then
+        return ""
+      end
 
-    local output = handle:read("*a")
-    if output == nil then
-      return ""
+      local output = handle:read("*a")
+      if output == nil then
+        return ""
+      end
+      env = string.match(output, "(.-)%s")
+      handle:close()
     end
-    local env = string.match(output, "(.-)%s")
-    handle:close()
-    -- if env ~= "system" then
-    --   return ""
-    -- end
     return env
   end
   return ""

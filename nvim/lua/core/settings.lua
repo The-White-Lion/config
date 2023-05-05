@@ -2,7 +2,7 @@ local M = {}
 
 function M:load_options()
   local default_options = {
-    mouse = "i",
+    mouse = "a",
     backup = false,
     fileencoding = "utf-8",
     cmdheight = 1,
