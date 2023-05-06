@@ -19,14 +19,34 @@ M.opts = {
     virtual_text = {
       spacing = 4,
       source = "if_many",
-      prefix = "●"
+      prefix = icons.ui.Prefix
+    },
+    signs = {
+      active = true,
+      values = {
+        { name = "DiagnosticSignError", text = icons.diagnostics.BoldError }
+      }
     },
     severity_sort = true,
-  }
+    capabilities = {},
+    autoformat = true,
+    -- format options can find in :h vim.lsp.buf.format
+    format = {
+      formatting_options = nil,
+      timeout_ms = nil
+    },
+  },
 }
 
 function M.config(_, opts)
+  local icon_names = { "Error", "Warn", "Info", "Hint" }
+  for _, name in ipairs(icon_names) do
+    local icon_name = name
+    name = "DiagnosticSign" .. name
+    vim.fn.sign_define(name, { text = icons.diagnostics["Bold" .. icon_name], texthl = name, numhl = "" })
+  end
   vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
+  -- 加载服务 默认加载 lua go bash python
   require("lspconfig").pyright.setup(opts)
   require("lspconfig").lua_ls.setup(opts)
 end
