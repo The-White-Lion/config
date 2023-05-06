@@ -89,11 +89,12 @@ M.opts = {
     lualine_c = {
       {
         "diagnostics",
+        padding = { left = 1, right = 0 },
         symbols = {
           error = icons.diagnostics.BoldError,
           warn = icons.diagnostics.BoldWarning,
           info = icons.diagnostics.BoldInformation,
-          hit = icons.diagnostics.BoldHint,
+          hint = icons.diagnostics.BoldHint,
         },
       },
       {
