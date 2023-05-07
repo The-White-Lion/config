@@ -12,7 +12,7 @@ M.opts = {
         filetype = "neo-tree",
         text = "Neo-tree",
         higlight = "Directory",
-        text_align = "center",
+        text_align = "left",
       },
     }
   },

@@ -21,12 +21,6 @@ M.opts = {
       source = "if_many",
       prefix = icons.ui.Prefix
     },
-    signs = {
-      active = true,
-      values = {
-        { name = "DiagnosticSignError", text = icons.diagnostics.BoldError }
-      }
-    },
     severity_sort = true,
     capabilities = {},
     autoformat = true,
@@ -35,20 +29,54 @@ M.opts = {
       formatting_options = nil,
       timeout_ms = nil
     },
+
+    -- LSP Server Settings
+    servers = {
+      bashls = {},
+      clangd = {},
+      gopls = {},
+      golangci_lint_ls = {},
+      jsonls = {},
+      lua_ls = {},
+      pyright = {},
+    },
   },
 }
 
 function M.config(_, opts)
-  local icon_names = { "Error", "Warn", "Info", "Hint" }
-  for _, name in ipairs(icon_names) do
-    local icon_name = name
-    name = "DiagnosticSign" .. name
-    vim.fn.sign_define(name, { text = icons.diagnostics["Bold" .. icon_name], texthl = name, numhl = "" })
+  -- TODO autoformat && keymap
+
+  -- sidebar diagnostics icons
+  local function set_sidebar_icons()
+    local icon_names = {
+      Error = icons.diagnostics.BoldError,
+      Warn = icons.diagnostics.BoldWarning,
+      Info = icons.diagnostics.BoldInfo,
+      Hint = icons.diagnostics.BoldHint,
+    }
+    for type, icon in pairs(icon_names) do
+      local name = "DiagnosticSign" .. type
+      vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
+    end
   end
+
+  set_sidebar_icons()
+  vim.lsp.set_log_level("debug")
   vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
-  -- 加载服务 默认加载 lua go bash python
-  require("lspconfig").pyright.setup(opts)
-  require("lspconfig").lua_ls.setup(opts)
+
+  local servers = opts.servers
+  local function setup(server)
+    local server_opts = servers[server] or {}
+  end
+
+  local have_mason, mlsp = pcall(require, "masson-lspconfig")
+  local ensure_installed = vim.tbl_keys(servers)
+
+  if have_mason then
+    mlsp.setup({ ensure_installed = ensure_installed })
+    mlsp.setup_handlers({ setup })
+  end
+
 end
 
 return M
