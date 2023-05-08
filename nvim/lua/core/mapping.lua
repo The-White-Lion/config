@@ -3,7 +3,7 @@ return {
     ["<Space>"] = "<nop>",
     -- Exit neovim
     ["<leader>q"] = ":q<CR>",
-    ["<M-q>"] = ":qa<CR>",
+    ["<M-q>"] = ":qa!<CR>",
     -- Save file
     ["<C-s>"] = ":w<CR>",
     -- Better cursor movement

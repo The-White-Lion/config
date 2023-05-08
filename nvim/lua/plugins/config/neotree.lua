@@ -41,13 +41,14 @@ M.opts = {
   },
   filesystem = {
     filtered_items = {
+      bind_to_cwd = false,
       follow_current_file = true,
       visible = false,
       hide_dotfiles = false,
       hide_gitignored = false,
       hide_by_pattern = {},
       always_show = {
-        ".gitignored",
+        ".gitignore",
       },
       never_show_by_pattern = {
         "__pycache__",
@@ -55,5 +56,15 @@ M.opts = {
     },
   },
 }
+
+function M.init()
+  vim.g.neo_tree_remove_legacy_commands = 1
+    if vim.fn.argc() == 1 then
+      local stat = vim.loop.fs_stat(vim.fn.argv(0))
+      if stat and stat.type == "directory" then
+        require("neo-tree")
+      end
+    end
+end
 
 return M
