@@ -47,6 +47,15 @@ return {
     opts = require("plugins.config.bufferline").opts,
   },
 
+  -- lsp symbol navigation
+  {
+    "SmiteshP/nvim-navic",
+    lazy = true,
+    init = function()
+      vim.g.navic_silence = true
+    end,
+  },
+
   -- dashboard
   {
     "goolord/alpha-nvim",

@@ -12,25 +12,25 @@ function M.opts()
       end,
     },
     mapping = cmp.mapping.preset.insert({
-      ["<c-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert}),
-      ["<c-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert}),
-      ["<tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert}),
+      ["<c-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+      ["<c-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+      ["<tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
       ["<c-b>"] = cmp.mapping.scroll_docs(-4),
       ["<c-f>"] = cmp.mapping.scroll_docs(4),
       ["<c-space>"] = cmp.mapping.complete(),
-      ["<cr>"] = cmp.mapping.confirm({ select = true}),
+      ["<cr>"] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
       { name = "nvim_lsp" },
       { name = "luasnip" },
       { name = "buffer" },
-      { name = "path"},
+      { name = "path" },
     }),
     formatting = {
       format = function(_, item)
         local icons = icons.kind
         if icons[item.kind] then
-          item.kind = icons[item.kind] .. item.kind
+          item.kind = icons[item.kind]
         end
         return item
       end
