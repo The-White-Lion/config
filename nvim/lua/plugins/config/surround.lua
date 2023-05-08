@@ -35,7 +35,6 @@ M.keys = function(_, keys)
 end
 
 M.config = function(_, opts)
-  print(vim.inspect(opts))
   require("mini.surround").setup(opts)
 end
 

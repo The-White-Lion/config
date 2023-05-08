@@ -55,4 +55,13 @@ return {
     opts = require("plugins.config.surround").opts,
     config = require("plugins.config.surround").config,
   },
+
+  -- comments
+  { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+  {
+    "echasnovski/mini.comment",
+    event = "VeryLazy",
+    opts = require("plugins.config.comment").opts,
+    config = require("plugins.config.comment").config,
+  },
 }
