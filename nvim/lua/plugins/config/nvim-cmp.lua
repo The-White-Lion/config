@@ -14,7 +14,6 @@ function M.opts()
     mapping = cmp.mapping.preset.insert({
       ["<c-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
       ["<c-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-      ["<tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
       ["<c-b>"] = cmp.mapping.scroll_docs(-4),
       ["<c-f>"] = cmp.mapping.scroll_docs(4),
       ["<c-space>"] = cmp.mapping.complete(),

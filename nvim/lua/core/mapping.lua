@@ -39,6 +39,7 @@ return {
   },
   insert_mode = {
     ["jk"] = "<esc>",
+    ["<esc>"] = "<nop>",
   },
   visual_mode = {
     ["j"] = "gj",

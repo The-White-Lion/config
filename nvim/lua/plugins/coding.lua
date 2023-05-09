@@ -22,6 +22,17 @@ return {
 		opts = require("plugins.config.lsp").opts,
 	},
 
+  -- treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    version = false,
+    build = "TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
+    keys = require("plugins.config.treesitter").keys,
+    opts = require("plugins.config.treesitter").opts,
+    config = require("plugins.config.treesitter").config,
+  },
+
 	-- auto completion
 	{
 		"hrsh7th/nvim-cmp",

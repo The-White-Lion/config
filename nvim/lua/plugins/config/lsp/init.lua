@@ -45,6 +45,9 @@ M.opts = {
 
 function M.config(_, opts)
   -- TODO autoformat && keymap
+  require("util").on_attach(function(client, buffer)
+    require("plugins.config.lsp.keymaps").on_attach(client, buffer)
+  end)
 
   -- sidebar diagnostics icons
   local function set_sidebar_icons()
