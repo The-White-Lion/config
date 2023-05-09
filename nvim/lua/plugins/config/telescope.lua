@@ -23,7 +23,7 @@ M.keys = {
 
 M.opts = {
   defaults = {
-    prompt_prefix = icons.ui.ChevronShortRight,
+    prompt_prefix = icons.ui.ChevronShortRight .. " ",
     selection_caret = icons.ui.TriangleShortArrowRight,
     mappings = {
       i = {
