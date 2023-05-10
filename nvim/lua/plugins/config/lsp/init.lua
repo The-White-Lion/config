@@ -44,8 +44,11 @@ M.opts = {
 }
 
 function M.config(_, opts)
-  -- TODO autoformat && keymap
+  -- setup autoformat
+  require("plugins.config.lsp.format").autoformat = opts.autoformat
+  -- setup formatting and keymaps
   require("util").on_attach(function(client, buffer)
+    require("plugins.config.lsp.format").on_attach(client, buffer)
     require("plugins.config.lsp.keymaps").on_attach(client, buffer)
   end)
 

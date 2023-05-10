@@ -22,17 +22,6 @@ return {
 		opts = require("plugins.config.lsp").opts,
 	},
 
-  -- treesitter
-  {
-    "nvim-treesitter/nvim-treesitter",
-    version = false,
-    build = "TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-    keys = require("plugins.config.treesitter").keys,
-    opts = require("plugins.config.treesitter").opts,
-    config = require("plugins.config.treesitter").config,
-  },
-
 	-- auto completion
 	{
 		"hrsh7th/nvim-cmp",
@@ -47,6 +36,35 @@ return {
 		},
 		opts = require("plugins.config.nvim-cmp").opts,
 	},
+
+  -- treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    version = false,
+    build = "TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
+    keys = require("plugins.config.treesitter").keys,
+    opts = require("plugins.config.treesitter").opts,
+    config = require("plugins.config.treesitter").config,
+  },
+
+  -- formatters
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    dependencies = { "mason.nvim" },
+    event = { "BufNewFile", "BufReadPre"},
+    opts = function()
+      local null_ls = require("null-ls")
+      return {
+        root_dir = require("null-ls.utils").root_pattern(".null-ls-root", "Makefile", ".git"),
+        sources = {
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.diagnostics.eslint,
+          null_ls.builtins.completion.spell,
+        },
+    }
+    end
+  },
 
 	-- auto pairs
 	{
