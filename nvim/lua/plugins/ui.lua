@@ -1,4 +1,24 @@
 return {
+	-- better `vim.notify()`
+	{
+		"rcarriga/nvim-notify",
+		keys = {
+			{
+				"<leader>un",
+				function()
+					require("notify").dismiss({ silent = true, pending = true })
+				end,
+				desc = "Delete all Notifications",
+			},
+		},
+		opts = {
+			timeout = 3000,
+		},
+		init = function()
+			vim.notify = require("notify")
+		end,
+	},
+
 	-- better vim.ui
 	{
 		"stevearc/dressing.nvim",
