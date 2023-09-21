@@ -1,2 +1,2 @@
-prefix=/home/tiger/.development/npm-package
+prefix=~/.development/npm-package
 registry=https://registry.npmmirror.com/

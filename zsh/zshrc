@@ -1,4 +1,4 @@
-for config_file in /home/tiger/.config/zsh/*.zsh
+for conf in "${HOME}/.config/zsh/"*.zsh
 do
-  source "${config_file}"
+  source "${conf}"
 done
